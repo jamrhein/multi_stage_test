@@ -2,7 +2,7 @@
 FROM rockylinux:9 AS base
 # FROM ubuntu AS base
 RUN ls -l
-RUN PWD
+RUN pwd
 # COPY docker/setup_tempo.sh setup_tempo.sh
 RUN echo "base"
 
