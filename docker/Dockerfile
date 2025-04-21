@@ -1,7 +1,9 @@
 # syntax=docker/dockerfile:1
 FROM rockylinux:9 AS base
 # FROM ubuntu AS base
-# COPY setup_tempo.sh setup_tempo.sh
+RUN echo ls -l
+RUN echo PWD
+# COPY docker/setup_tempo.sh setup_tempo.sh
 RUN echo "base"
 
 FROM base AS stage1
