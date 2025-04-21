@@ -10,6 +10,6 @@ RUN echo "stage1"
 
 FROM base AS stage2
 RUN echo "stage2"
-COPY ./entrypoint.sh /opt/docker/bin/entrypoint
+# COPY ./entrypoint.sh /opt/docker/bin/entrypoint
 RUN ls -l /opt/docker/bin/entrypoint
 ENTRYPOINT ["/opt/docker/bin/entrypoint"]
