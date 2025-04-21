@@ -1,10 +1,12 @@
 # syntax=docker/dockerfile:1
 FROM rockylinux:9 AS base
 # FROM ubuntu AS base
-RUN ls -l
+RUN find / -name Dockerfile
 RUN pwd
-# COPY docker/setup_tempo.sh setup_tempo.sh
+
+COPY setup_tempo.sh setup_tempo.sh
 RUN echo "base"
+RUN ls -l
 
 FROM base AS stage1
 # COPY setup_tempo2.sh $HOME/setup_tempo2.sh
