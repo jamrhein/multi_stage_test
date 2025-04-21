@@ -3,10 +3,10 @@ FROM rockylinux:9 AS base
 # FROM ubuntu AS base
 RUN find / -name Dockerfile
 RUN pwd
-
-COPY setup_tempo.sh setup_tempo.sh
+RUN ls -l /home/runner/
+# COPY setup_tempo.sh setup_tempo.sh
 RUN echo "base"
-RUN ls -l
+RUN ls -l /home/runner/work/_temp/
 
 FROM base AS stage1
 # COPY setup_tempo2.sh $HOME/setup_tempo2.sh
