@@ -17,5 +17,5 @@ FROM stage1 AS stage2
 RUN echo "stage2"
 COPY entrypoint.sh /opt/docker/bin/entrypoint
 RUN ls -l /opt/docker/bin/entrypoint
-# ENTRYPOINT ["/opt/docker/bin/entrypoint"]
-ENTRYPOINT ["/opt/docker/bin/"]
+ENTRYPOINT ["/opt/docker/bin/entrypoint"]
+# ENTRYPOINT ["/opt/docker/bin/"]
