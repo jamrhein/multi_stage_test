@@ -1,4 +1,4 @@
-#!/bin/bash -il
+#! /bin/sh
 
 # Create conda user with the same uid as the host, so the container can write
 # to mounted volumes

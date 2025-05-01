@@ -10,7 +10,7 @@ RUN ls -l
 
 FROM base AS stage1
 COPY setup_tempo2.sh setup_tempo2.sh
-COPY entrypoint /opt/docker/bin/entrypoint
+COPY entrypoint.sh /opt/docker/bin/entrypoint
 RUN ls -l
 RUN echo "stage1"
 RUN ls -l /opt/docker/bin/entrypoint
