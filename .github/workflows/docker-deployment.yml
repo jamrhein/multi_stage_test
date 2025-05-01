@@ -1,35 +1,18 @@
-name: Push into main branch
+name: Build multi-platform Docker image
 on:
-  push:
-    branches: [ "main" ]
-    paths-ignore:
-      - .dockerignore
-      - .gitignore
-      - docker-compose.yml
-      - Dockerfile
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
-
+  push: {}
 jobs:
-  context:
-    runs-on: ubuntu-latest
+  build-with-docker:
+    name: Build multi-platform Docker image
+    runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Build
-        id: build
-        uses: cloudposse/github-action-docker-build-push@main
+      - uses: actions/checkout@v4
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3.10.0
+      - uses: docker/build-push-action@v6.16.0
         with:
-          registry: registry.hub.docker.com
-          debug: true
-          file: docker/Dockerfile 
-          organization: "${{ github.event.repository.owner.login }}"
-          repository: "${{ github.event.repository.name }}"
-          login: "${{ secrets.DOCKERHUB_USERNAME }}"
-          password: "${{ secrets.DOCKERHUB_PASSWORD }}"
+          context: .
           platforms: linux/amd64,linux/arm64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          file: docker/Dockerfile
