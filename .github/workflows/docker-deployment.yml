@@ -15,5 +15,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           file: docker/Dockerfile
           push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:latest
+          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
