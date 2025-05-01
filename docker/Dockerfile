@@ -13,9 +13,5 @@ COPY setup_tempo2.sh setup_tempo2.sh
 COPY entrypoint /opt/docker/bin/entrypoint
 RUN ls -l
 RUN echo "stage1"
-
-FROM stage1 AS stage2
-RUN echo "stage2"
-COPY entrypoint /opt/docker/bin/entrypoint
 RUN ls -l /opt/docker/bin/entrypoint
 ENTRYPOINT ["/opt/docker/bin/entrypoint"]
